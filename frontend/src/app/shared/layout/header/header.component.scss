@@ -1,0 +1,208 @@
+@import "../../../../assets/styles/variables";
+
+header.header {
+  padding: 30px 0 49px 0;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+
+    .header-top {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+
+      padding: 32px 0 25px 0;
+
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #B6D5B9;
+
+      .header-top-menu {
+        margin-left: 26px;
+        margin-right: 191px;
+
+        nav ul {
+          margin: 0;
+          padding: 0;
+          display: flex;
+
+          li {
+            margin-right: 40px;
+            list-style: none;
+            border-bottom: 1px solid transparent;
+
+            &.active {
+              border-bottom-color: $green-text-color;
+            }
+
+            a {
+              font-family: 'Montserrat', sans-serif;
+              font-weight: 500;
+              font-size: 16px;
+              color: $green-text-color;
+              cursor: pointer;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+
+      .header-top-phone {
+        color: $green-text-color;
+        font-style: normal;
+        font-size: 16px;
+        margin-right: 59px;
+        text-decoration: none;
+      }
+
+      .header-top-actions {
+        display: flex;
+        align-items: center;
+
+        a {
+          cursor: pointer;
+          text-decoration: none;
+          margin-right: 8px;
+          position: relative;
+
+          &:last-child {
+            margin-right: 18px;
+
+          }
+
+          span {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            top: 10px;
+            right: -18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 9px;
+            color: #202b21;
+            border-radius: 50%;
+            background: #b6d5b9;
+
+          }
+        }
+      }
+    }
+
+    .header-bottom {
+
+      padding: 16px 0 0 0;
+
+      display: flex;
+      align-items: center;
+
+      .header-bottom-menu {
+        margin-right: 97px;
+        margin-left: 26px;
+
+        nav ul {
+          margin: 0;
+          padding: 0;
+          display: flex;
+
+          li {
+            border-bottom: 1px solid transparent;
+            margin-right: 50px;
+            list-style: none;
+
+            &.active {
+              border-bottom-color: $green-text-color;
+            }
+
+            a {
+              text-decoration: none;
+              font-size: 16px;
+              color: $green-text-color;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      .header-bottom-search {
+        position: relative;
+
+        input {
+          border: 1px solid $green-text-color;
+          border-radius: 30px;
+          padding: 10px 10px 10px 43px;
+          width: 214px;
+          height: 41px;
+          box-sizing: border-box;
+          outline: none;
+
+          font-size: 16px;
+          color: $green-text-color;
+        }
+
+        &::after {
+          content: "";
+          background-image: url("../../../../assets/images/icons/search-normal.png");
+          background-size: cover;
+          position: absolute;
+          width: 16px;
+          height: 16px;
+          left: 15px;
+          top: 11px;
+        }
+
+        .search-products {
+          position: absolute;
+          width: 400px;
+          background-color: #fff;
+          border-radius: 5px;
+          border: 1px solid #Ebebeb;
+          right: 0;
+          top: 51px;
+
+          .search-product{
+            padding: 12px 23px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            background-color: #fff;
+
+            &:hover{
+              background-color: #Ebebeb;
+              .search-product-name{
+                color: #000;
+              }
+            }
+            &:first-child{
+              border-top-left-radius: 5px;
+              border-top-right-radius: 5px;
+            }
+            &:last-child{
+              border-bottom-left-radius: 5px;
+              border-bottom-right-radius: 5px;
+            }
+
+            .search-product-image{
+              width: 40px;
+              height: 40px;
+              border-radius: 5px;
+              margin-right: 25px;
+              background-position: center;
+              background-size: cover;
+            }
+
+            .search-product-name{
+              color: #8e8e8e;
+              font-size: 16px;
+              line-height: 130%;
+            }
+
+          }
+        }
+      }
+    }
+  }
+}
