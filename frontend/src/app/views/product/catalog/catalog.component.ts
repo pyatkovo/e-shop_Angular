@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {CategoryService} from 'src/app/shared/services/category.service';
 import {ProductService} from 'src/app/shared/services/product.service';
 import {ProductType} from 'src/types/product.type';
@@ -182,7 +182,8 @@ export class CatalogComponent implements OnInit {
     this.activeParams.sort = value
     this.router.navigate(['/catalog'], {
       queryParams: this.activeParams
-    })
+    });
+    // this.sortingOpen = false;
   }
 
   openPage(page: number) {
@@ -193,6 +194,9 @@ export class CatalogComponent implements OnInit {
   }
 
   openNextPage() {
+    if (!this.activeParams.page){
+      this.activeParams.page = 1;
+    }
     if (this.activeParams.page && this.activeParams.page < this.pages.length) {
       this.activeParams.page++;
       this.router.navigate(['/catalog'], {
@@ -207,6 +211,13 @@ export class CatalogComponent implements OnInit {
       this.router.navigate(['/catalog'], {
         queryParams: this.activeParams
       })
+    }
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event) {
+     if (this.sortingOpen && !(event.target as HTMLElement).closest('.catalog-sorting')) {
+      this.sortingOpen = false;
     }
   }
 }

@@ -1,5 +1,9 @@
-<app-header [categories]="categories"></app-header>
+<div class="wrapper">
+  <app-header [categories]="categories" class="header"></app-header>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer [categories]="categories" class="footer"></app-footer>
+</div>
 
-<router-outlet></router-outlet>
 
-<app-footer [categories]="categories"></app-footer>

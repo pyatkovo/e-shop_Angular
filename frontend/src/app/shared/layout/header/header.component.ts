@@ -1,18 +1,18 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
-import { CategoryType } from 'src/types/category.type';
-import { AuthService } from "../../../core/auth/auth.service";
-import { DefaultResponseType } from "../../../../types/default-response.type";
-import { HttpErrorResponse } from "@angular/common/http";
-import { MatSnackBar } from "@angular/material/snack-bar";
-import { Router } from "@angular/router";
-import { CategoryWithTypeType } from "../../../../types/category-with-type.type";
-import { CartService } from "../../services/cart.service";
-import { debounceTime, mergeWith } from 'rxjs';
-import { ProductService } from '../../services/product.service';
-import { ProductType } from 'src/types/product.type';
-import { environment } from 'src/environments/environment';
-import { FormControl } from '@angular/forms';
-import { LoaderService } from '../../services/loader.service';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
+import {CategoryType} from 'src/types/category.type';
+import {AuthService} from "../../../core/auth/auth.service";
+import {DefaultResponseType} from "../../../../types/default-response.type";
+import {HttpErrorResponse} from "@angular/common/http";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
+import {CategoryWithTypeType} from "../../../../types/category-with-type.type";
+import {CartService} from "../../services/cart.service";
+import {debounceTime, mergeWith} from 'rxjs';
+import {ProductService} from '../../services/product.service';
+import {ProductType} from 'src/types/product.type';
+import {environment} from 'src/environments/environment';
+import {FormControl} from '@angular/forms';
+import {LoaderService} from '../../services/loader.service';
 
 @Component({
   selector: 'app-header',
@@ -31,16 +31,16 @@ export class HeaderComponent implements OnInit {
 
 
   constructor(private authService: AuthService, private _snackBar: MatSnackBar, private loader: LoaderService,
-    private router: Router, private cartService: CartService, private productService: ProductService) {
+              private router: Router, private cartService: CartService, private productService: ProductService) {
     this.isLogged = this.authService.getIsLoggedIn();
   }
 
   ngOnInit(): void {
 
     this.searchField.valueChanges
-    .pipe(
-      debounceTime(500)
-    )
+      .pipe(
+        debounceTime(500)
+      )
       .subscribe(value => {
         if (value && value.length > 2) {
           this.productService.searchProducts(value)
@@ -55,8 +55,17 @@ export class HeaderComponent implements OnInit {
 
     this.authService.isLogged$.subscribe((isLoggedIn: boolean) => {
       this.isLogged = isLoggedIn;
+      this.getCartCount();
     })
 
+
+    this.cartService.count$
+      .subscribe(count => {
+        this.count = count;
+      })
+  }
+
+  getCartCount(){
     this.cartService.getCartCount()
       .subscribe((data: { count: number } | DefaultResponseType) => {
         if ((data as DefaultResponseType).error !== undefined) {
@@ -64,11 +73,6 @@ export class HeaderComponent implements OnInit {
         }
 
         this.count = (data as { count: number }).count;
-      })
-
-    this.cartService.count$
-      .subscribe(count => {
-        this.count = count;
       })
   }
 
