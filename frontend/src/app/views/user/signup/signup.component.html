@@ -9,9 +9,11 @@
         <div class="auth-input"><input type="password" formControlName="password" class="input" placeholder="Пароль"
                                        [ngStyle]="{'border-color': signupForm.get('password')?.invalid &&
          (signupForm.get('password')?.dirty || signupForm.get('password')?.touched) ? 'red' : '' }"></div>
-        <div class="auth-input"><input type="password" formControlName="passwordRepeat" class="input" placeholder="Повторите пароль"
+        <div class="auth-input">
+          <input type="password" formControlName="passwordRepeat" class="input" placeholder="Повторите пароль"
                                        [ngStyle]="{'border-color': signupForm.get('passwordRepeat')?.invalid &&
-         (signupForm.get('passwordRepeat')?.dirty || signupForm.get('passwordRepeat')?.touched) ? 'red' : '' }"></div>
+         (signupForm.get('passwordRepeat')?.dirty || signupForm.get('passwordRepeat')?.touched) ? 'red' : '' }">
+        </div>
 
         <div class="auth-checkbox"><input type="checkbox" formControlName="agree" id="agree"><label for="agree">Я принимаю
           <a href="#">условия пользовательского соглашения</a> и даю <a href="#">согласие на обработку персональных

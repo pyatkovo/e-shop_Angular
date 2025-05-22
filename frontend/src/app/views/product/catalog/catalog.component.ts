@@ -145,7 +145,6 @@ export class CatalogComponent implements OnInit {
                   this.products = data.items;
                 }
 
-
                 if(this.favoriteProducts){
                   this.products = this.products.map(product => {
                     const productInFavorite = this.favoriteProducts?.find(item => item.id === product.id);

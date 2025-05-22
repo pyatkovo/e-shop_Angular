@@ -28,6 +28,7 @@ export class DetailComponent implements OnInit {
   serverStaticPath = environment.serverStaticPath;
   isLogged: boolean = false;
 
+
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -61,6 +62,7 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.activatedRoute.params.subscribe(params => {
       this.productService.getProduct(params['url'])
         .subscribe((data: ProductType) => {
@@ -163,7 +165,6 @@ export class DetailComponent implements OnInit {
           if ((data as DefaultResponseType).error !== undefined) {
             throw new Error((data as DefaultResponseType).message);
           }
-
           this.product.isInFavorite = true;
 
         });

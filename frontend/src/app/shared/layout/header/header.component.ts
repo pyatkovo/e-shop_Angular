@@ -58,6 +58,7 @@ export class HeaderComponent implements OnInit {
       this.getCartCount();
     })
 
+    this.getCartCount();
 
     this.cartService.count$
       .subscribe(count => {
@@ -71,8 +72,8 @@ export class HeaderComponent implements OnInit {
         if ((data as DefaultResponseType).error !== undefined) {
           throw new Error((data as DefaultResponseType).message);
         }
-
         this.count = (data as { count: number }).count;
+        console.log(this.count);
       })
   }
 

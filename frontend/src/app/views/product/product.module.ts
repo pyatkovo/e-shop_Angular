@@ -11,7 +11,6 @@ import {CarouselModule} from "ngx-owl-carousel-o";
 @NgModule({
   declarations: [
     CatalogComponent,
-
     DetailComponent
   ],
   imports: [
